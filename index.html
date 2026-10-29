@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lucrezia Minnucci - Software Engineer</title>
+<meta name="description" content="Portfolio of university projects: graphics programming, game development and software engineering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light;
+  --bg: #eef1f6;
+  --ink: #14203a;
+  --muted: #55627d;
+  --line: #c9d1e0;
+  --accent: #2f5bea;
+  --sun: #e8921a;
+  --chip: #dde4f3;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg: #0f1730;
+    --ink: #e8edf8;
+    --muted: #9aa8c7;
+    --line: #2a3658;
+    --accent: #7c9bff;
+    --sun: #f5b04a;
+    --chip: #1b2748;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 1.0625rem/1.6 "IBM Plex Sans", system-ui, sans-serif;
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 60rem; margin: 0 auto; padding: 0 1.5rem; }
+
+
+.hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; align-items: center; padding: 4.5rem 0 3rem; }
+h1, h2, h3 { font-family: "Bricolage Grotesque", "IBM Plex Sans", system-ui, sans-serif; line-height: 1.1; margin: 0; }
+h1 { font-size: clamp(2.6rem, 7vw, 4.4rem); font-weight: 700; letter-spacing: -0.02em; }
+.role { font-size: 1.25rem; color: var(--muted); margin: 1rem 0 1.5rem; max-width: 30rem; }
+.contacts { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.contacts a {
+  padding: 0.5rem 1rem; border: 1.5px solid var(--ink); border-radius: 999px;
+  text-decoration: none; font-weight: 500;
+}
+.contacts a:hover { background: var(--ink); color: var(--bg); }
+#orbit { width: 100%; height: auto; aspect-ratio: 1; max-width: 22rem; justify-self: end; }
+
+
+h2 { font-size: 1.9rem; margin: 2rem 0 0.5rem; }
+.project { display: grid; grid-template-columns: 1fr; gap: 0.75rem; padding: 2rem 0; border-top: 1px solid var(--line); }
+.project h3 { font-size: 1.5rem; }
+.project p { margin: 0; max-width: 40rem; }
+.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0; margin: 0; list-style: none; }
+.tags li { background: var(--chip); padding: 0.15rem 0.7rem; border-radius: 999px; font-size: 0.875rem; color: var(--muted); }
+.links { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-top: 0.25rem; }
+.links a, .links button {
+  font: 500 1rem "IBM Plex Sans", sans-serif; color: var(--accent); background: none; border: 0;
+  padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 4px;
+}
+.demo { margin-top: 0.5rem; }
+.demo iframe { width: 100%; max-width: 40rem; aspect-ratio: 16 / 9; border: 0; border-radius: 8px; }
+.demo .hint { color: var(--sun); font-size: 0.95rem; }
+
+footer { border-top: 1px solid var(--line); padding: 2rem 0 3rem; color: var(--muted); font-size: 0.95rem; }
+
+@media (max-width: 40rem) {
+  .hero { grid-template-columns: 1fr; padding-top: 3rem; }
+  #orbit { justify-self: center; max-width: 16rem; order: -1; }
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <header class="hero">
+    <div>
+      <h1>Hey :)</h1>
+      <p class="role">My name is Lucrezia and I'm a software engineer with a curious mind and a passion for building things from scratch. <br>
+
+        I enjoy exploring ideas, figuring out how to bring them to life, and getting hands-on with the process - whether it's a graphics project, a small game, or a piece of software. <br>
+
+        Here you'll find a selection of projects I've worked on during my university studies.</p>
+      <nav class="contacts" aria-label="Contacts">
+        <a href="mailto:lucrezia.minnucci@gmail.com">Email</a>
+        <a href="https://github.com/aizerrrrrr">GitHub</a>
+        <a href="https://www.linkedin.com/in/lucrezia-minnucci-1ba70726a">LinkedIn</a>
+      </nav>
+    </div>
+    <canvas id="orbit" width="440" height="440" role="img" aria-label="Animated solar system"></canvas>
+  </header>
+
+  <section aria-labelledby="projects">
+
+    <article class="project">
+      <h3>Real-Time Rendering Engine</h3>
+      <p>A C++ simulation of the solar system rendered in 3D with OpenGL, using custom GLSL shaders.</p>
+      <ul class="tags"><li>C++</li><li>OpenGL</li><li>GLSL</li></ul>
+      <div class="links">
+        <button type="button" data-video="https://drive.google.com/file/d/1YecY9scpd4KbZ_YWBk_DNPh-3-Vg6T0T/view?usp=share_link">Watch demo</button>
+      </div>
+    </article>
+
+    <article class="project">
+      <h3>Linear Algebra Library</h3>
+      <p>A C++ library to support OpenGL graphics rendering.</p>
+      <ul class="tags"><li>C++</li><li>OpenGL</li><li>Library design</li></ul>
+      <div class="links">
+        <a href="https://github.com/aizerrrrrr/AlgLin_Lib.git">Source code</a>
+      </div>
+    </article>
+
+    <article class="project">
+      <h3>Brick Breaker Remake</h3>
+      <p>A Python remake of the classic Brick Breaker arcade game.</p>
+      <ul class="tags"><li>Python</li><li>PyGame</li></ul>
+      <div class="links">
+        <button type="button" data-video="https://drive.google.com/file/d/1xBDKRwbcyP96sVb-s1fQHLZoDA-SIXIb/view?usp=share_link">Watch demo</button>
+      </div>
+    </article>
+
+    <article class="project">
+      <h3>PentaNotes</h3>
+      <p>A team-developed music-themed game built with Unity. <br> I implemented one of the mini-games in C#.</p>
+      <ul class="tags"><li>C#</li><li>Unity</li></ul>
+      <div class="links">
+        <button type="button" data-video="https://drive.google.com/file/d/1_xhMYjn4_fHvxEfuhpS1UojMCz_2PEsd/view?usp=share_link">Watch demo</button>
+        <a href="https://github.com/fracchiomon/AutomatizzatoBioparcoTransdimensionale.git">Source code</a>
+      </div>
+    </article>
+
+    <article class="project">
+      <h3>SquarezBreaker!</h3>
+      <p>A Java remake of the game "Jardinains!", with the interface built using Java Swing.</p>
+      <ul class="tags"><li>Java</li><li>Swing</li></ul>
+      <div class="links">
+        <button type="button" data-video="https://drive.google.com/file/d/1DtAT1dFgn65eb00j9YesyMFvu00szcG1/view?usp=share_link">Watch demo</button>
+      </div>
+    </article>
+  </section>
+
+  <footer>
+    <p>© <span id="year"></span> Lucrezia Minnucci</p>
+  </footer>
+</main>
+
+<script>
+// footer year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// watch demo
+document.querySelectorAll('button[data-video]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var article = btn.closest('.project');
+    var existing = article.querySelector('.demo');
+    if (existing) { existing.remove(); btn.textContent = 'Watch demo'; return; }
+    var box = document.createElement('div');
+    box.className = 'demo';
+    var id = btn.dataset.video;
+    if (!id || id === 'VIDEO_ID') {
+      box.innerHTML = '<p class="hint">Video not set yet: replace VIDEO_ID in index.html.</p>';
+    } else {
+      var f = document.createElement('iframe');
+      var drive = id.match(/drive\.google\.com\/file\/d\/([\w-]+)/);
+      if (drive) {
+        f.src = 'https://drive.google.com/file/d/' + drive[1] + '/preview';
+        f.allow = 'autoplay';
+      } else {
+        f.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id);
+      }
+      f.title = 'Demo video';
+      f.allowFullscreen = true;
+      f.loading = 'lazy';
+      box.appendChild(f);
+    }
+    article.appendChild(box);
+    btn.textContent = 'Hide demo';
+  });
+});
+
+// small orbiting solar system
+(function () {
+  var c = document.getElementById('orbit'), g = c.getContext('2d');
+  var W = c.width, cx = W / 2;
+  var planets = [
+    { r: 60,  s: 1.6,  size: 6,  col: '#8a93a8' },
+    { r: 100, s: 1.1,  size: 9,  col: '#d9a15a' },
+    { r: 145, s: 0.75, size: 10, col: '#3f7be0' },
+    { r: 195, s: 0.45, size: 8,  col: '#c9593b' }
+  ];
+  function css(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
+  function draw(t) {
+    g.clearRect(0, 0, W, W);
+    g.lineWidth = 1; g.strokeStyle = css('--line');
+    planets.forEach(function (p, i) {
+      g.beginPath(); g.arc(cx, cx, p.r, 0, 6.2832); g.stroke();
+      var a = t * p.s + i * 1.7;
+      g.fillStyle = p.col;
+      g.beginPath(); g.arc(cx + Math.cos(a) * p.r, cx + Math.sin(a) * p.r, p.size, 0, 6.2832); g.fill();
+    });
+    g.fillStyle = css('--sun');
+    g.beginPath(); g.arc(cx, cx, 22, 0, 6.2832); g.fill();
+  }
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (still) { draw(0.5); return; }
+  (function loop(ms) { draw(ms / 1000 * 0.6); requestAnimationFrame(loop); })(0);
+})();
+</script>
+</body>
+</html>
