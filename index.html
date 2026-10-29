@@ -64,13 +64,10 @@ h2 { font-size: 1.9rem; margin: 2rem 0 0.5rem; }
 .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0; margin: 0; list-style: none; }
 .tags li { background: var(--chip); padding: 0.15rem 0.7rem; border-radius: 999px; font-size: 0.875rem; color: var(--muted); }
 .links { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-top: 0.25rem; }
-.links a, .links button {
+.links a {
   font: 500 1rem "IBM Plex Sans", sans-serif; color: var(--accent); background: none; border: 0;
   padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 4px;
 }
-.demo { margin-top: 0.5rem; }
-.demo iframe { width: 100%; max-width: 40rem; aspect-ratio: 16 / 9; border: 0; border-radius: 8px; }
-.demo .hint { color: var(--sun); font-size: 0.95rem; }
 
 footer { border-top: 1px solid var(--line); padding: 2rem 0 3rem; color: var(--muted); font-size: 0.95rem; }
 
@@ -107,7 +104,7 @@ footer { border-top: 1px solid var(--line); padding: 2rem 0 3rem; color: var(--m
       <p>A C++ simulation of the solar system rendered in 3D with OpenGL, using custom GLSL shaders.</p>
       <ul class="tags"><li>C++</li><li>OpenGL</li><li>GLSL</li></ul>
       <div class="links">
-        <button type="button" data-video="https://drive.google.com/file/d/1YecY9scpd4KbZ_YWBk_DNPh-3-Vg6T0T/view?usp=share_link">Watch demo</button>
+        <a href="https://drive.google.com/file/d/1YecY9scpd4KbZ_YWBk_DNPh-3-Vg6T0T/view?usp=share_link" target="_blank" rel="noopener">Watch demo</a>
       </div>
     </article>
 
@@ -116,7 +113,7 @@ footer { border-top: 1px solid var(--line); padding: 2rem 0 3rem; color: var(--m
       <p>A C++ library to support OpenGL graphics rendering.</p>
       <ul class="tags"><li>C++</li><li>OpenGL</li><li>Library design</li></ul>
       <div class="links">
-        <a href="https://github.com/aizerrrrrr/AlgLin_Lib.git">Source code</a>
+        <a href="https://github.com/aizerrrrrr/AlgLin_Lib.git" target="_blank" rel="noopener">Source code</a>
       </div>
     </article>
 
@@ -125,7 +122,7 @@ footer { border-top: 1px solid var(--line); padding: 2rem 0 3rem; color: var(--m
       <p>A Python remake of the classic Brick Breaker arcade game.</p>
       <ul class="tags"><li>Python</li><li>PyGame</li></ul>
       <div class="links">
-        <button type="button" data-video="https://drive.google.com/file/d/1xBDKRwbcyP96sVb-s1fQHLZoDA-SIXIb/view?usp=share_link">Watch demo</button>
+        <a href="https://drive.google.com/file/d/1xBDKRwbcyP96sVb-s1fQHLZoDA-SIXIb/view?usp=share_link">Watch demo</a>
       </div>
     </article>
 
@@ -134,7 +131,7 @@ footer { border-top: 1px solid var(--line); padding: 2rem 0 3rem; color: var(--m
       <p>A team-developed music-themed game built with Unity. <br> I implemented one of the mini-games in C#.</p>
       <ul class="tags"><li>C#</li><li>Unity</li></ul>
       <div class="links">
-        <button type="button" data-video="https://drive.google.com/file/d/1_xhMYjn4_fHvxEfuhpS1UojMCz_2PEsd/view?usp=share_link">Watch demo</button>
+        <a href="https://drive.google.com/file/d/1_xhMYjn4_fHvxEfuhpS1UojMCz_2PEsd/view?usp=share_link" target="_blank" rel="noopener">Watch demo</a>
         <a href="https://github.com/fracchiomon/AutomatizzatoBioparcoTransdimensionale.git">Source code</a>
       </div>
     </article>
@@ -144,7 +141,7 @@ footer { border-top: 1px solid var(--line); padding: 2rem 0 3rem; color: var(--m
       <p>A Java remake of the game "Jardinains!", with the interface built using Java Swing.</p>
       <ul class="tags"><li>Java</li><li>Swing</li></ul>
       <div class="links">
-        <button type="button" data-video="https://drive.google.com/file/d/1DtAT1dFgn65eb00j9YesyMFvu00szcG1/view?usp=share_link">Watch demo</button>
+        <a href="https://drive.google.com/file/d/1DtAT1dFgn65eb00j9YesyMFvu00szcG1/view?usp=share_link" target="_blank" rel="noopener">Watch demo</a>
       </div>
     </article>
   </section>
@@ -157,36 +154,6 @@ footer { border-top: 1px solid var(--line); padding: 2rem 0 3rem; color: var(--m
 <script>
 // footer year
 document.getElementById('year').textContent = new Date().getFullYear();
-
-// watch demo
-document.querySelectorAll('button[data-video]').forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    var article = btn.closest('.project');
-    var existing = article.querySelector('.demo');
-    if (existing) { existing.remove(); btn.textContent = 'Watch demo'; return; }
-    var box = document.createElement('div');
-    box.className = 'demo';
-    var id = btn.dataset.video;
-    if (!id || id === 'VIDEO_ID') {
-      box.innerHTML = '<p class="hint">Video not set yet: replace VIDEO_ID in index.html.</p>';
-    } else {
-      var f = document.createElement('iframe');
-      var drive = id.match(/drive\.google\.com\/file\/d\/([\w-]+)/);
-      if (drive) {
-        f.src = 'https://drive.google.com/file/d/' + drive[1] + '/preview';
-        f.allow = 'autoplay';
-      } else {
-        f.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id);
-      }
-      f.title = 'Demo video';
-      f.allowFullscreen = true;
-      f.loading = 'lazy';
-      box.appendChild(f);
-    }
-    article.appendChild(box);
-    btn.textContent = 'Hide demo';
-  });
-});
 
 // small orbiting solar system
 (function () {
